@@ -244,8 +244,9 @@ def reset_auth(provider=None):
 
 @router.route('/')
 def root(mode=None, scraper=None, query=None, season=None, episode=None,
-         **kwargs):
+         metadata=True, **kwargs):
     """Business logic. `movie` and `tv` are from external plugins."""
+    args = dict(urlparse.parse_qsl(sys.argv[2][1:]))
 
     # Set up scraper
     selected_scraper = scraper or router.addon.getSetting('scraper')
