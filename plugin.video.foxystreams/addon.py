@@ -393,10 +393,10 @@ def root(mode=None, scraper=None, query=None, season=None, episode=None,
             mdata = ui.metadata_from(args)
             li.setInfo('video', mdata['info'])
 #   	    xbmc.log(str(mdata)+'===>FOXY_STREAMs', level=xbmc.LOGNOTICE)
-	        if mdata['info']['mediatype'] == 'movie':
-	        	li.setInfo('videos', {'mediatype' : 'movie'})
-	        else:
-		        li.setInfo('videos', {'mediatype' : 'episode'})
+	    if mdata['info']['mediatype'] == 'movie':
+	       	li.setInfo('videos', {'mediatype' : 'movie'})
+	    else:
+	        li.setInfo('videos', {'mediatype' : 'episode'})
             li.setArt(mdata['art'])
         xbmcplugin.setResolvedUrl(router.handle, bool(media_url), li)
         xbmcgui.Window(10000).setProperty('foxymeta.nativeplay', 'True')
