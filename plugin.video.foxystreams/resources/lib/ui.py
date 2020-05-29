@@ -88,7 +88,7 @@ def metadata_from(args):
 #    xbmc.log(str(args['mode'])+'===>FOXY_STREAMS', level=xbmc.LOGNOTICE)
     if args['mode'] == 'movie':
         info['mediatype'] = 'movie'
-	    info['movietitle'] = args.get('title', '')
+	info['movietitle'] = args.get('title', '')
         info['originaltitle'] = args.get('original_title', '')
         info['premiered'] = args.get('premiered', '')
     elif args['mode'] == 'tv':
