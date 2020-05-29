@@ -62,3 +62,41 @@ def add_torrent(user_debrid, magnet, fn_filter=None):
         notify('Added Torrent to Debrid')
     else:
         notify('Failed to add to Debrid')
+       
+def metadata_from(args):
+    metadata = {
+        'info': {
+            'title': args.get('title', ''),
+            'plot': args.get('plot', ''),
+            'genres': args.get('genre', ''),
+            'votes': args.get('votes', ''),
+            'rating': args.get('rating', ''),
+            'year': args.get('year', ''),
+            'mpaa': args.get('mpaa', ''),
+            'imdb': args.get('imdb', ''),
+            'name': args.get('name', ''),
+
+        },
+        'art': {
+            'poster': args.get('poster', ''),
+            'fanart': args.get('fanart', ''),
+            'clearlogo': args.get('clearlogo', ''),
+
+        },
+    }
+    info = metadata['info']
+#    xbmc.log(str(args['mode'])+'===>FOXY_STREAMS', level=xbmc.LOGNOTICE)
+    if args['mode'] == 'movie':
+        info['mediatype'] = 'movie'
+	    info['movietitle'] = args.get('title', '')
+        info['originaltitle'] = args.get('original_title', '')
+        info['premiered'] = args.get('premiered', '')
+    elif args['mode'] == 'tv':
+        info['mediatype'] = 'episode'
+        info['episode'] = args.get('episode', '')
+        info['season'] = args.get('season', '')
+        info['tvshowtitle'] = args.get('showname', '')
+        info['originaltitle'] = args.get('showname', '')
+        info['aired'] = args.get('aired', '')
+    return metadata
+
